@@ -1,0 +1,60 @@
+{
+  "name": "BasicProcessTemplate",
+  "description": "Template to be used o automate easy, basic processes.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.GSuite.Activities": "[1.13.2]",
+    "UiPath.System.Activities": "[21.10.2]",
+    "UiPath.UIAutomation.Activities": "[21.10.3]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "21.10.3.0",
+  "projectVersion": "1.0.1",
+  "runtimeOptions": {
+    "exceptionHandlerWorkflow": "GlobalHandler.xaml",
+    "autoDispose": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": true
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "0c7ba552-f5fc-410f-8610-0ea018e55917",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": true,
+  "templateProjectData": {
+    "defaultProjectDescription": "Template to be used o automate easy, basic processes.",
+    "defaultProjectName": "BasicProcessTemplate"
+  },
+  "publishData": {},
+  "targetFramework": "Legacy"
+}

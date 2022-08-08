@@ -1,0 +1,625 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Component_GetCurrencyData" this:Component_GetCurrencyData.in_SelectedDate="12.06.2012" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_SelectedDate" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1699,5459</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Component_GetCurrencyData_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Component_GetCurrencyData" sap:VirtualizedContainerService.HintSize="1709,5394" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="tempDay" />
+      <Variable x:TypeArguments="x:String" Name="tempMonth" />
+      <Variable x:TypeArguments="x:String" Name="tempYear" />
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="tryAgain" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InterruptibleDoWhile Condition="[tryAgain]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="1667,5302" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1631,5135" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="ui:UiElement" Name="browser" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Tarihi gün, ay, yıl şeklinde parçalıyorum&#xA;" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1589,206" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[tempDay]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Split(in_SelectedDate,".")(0)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[tempMonth]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Split(in_SelectedDate,".")(1)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[tempYear]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Split(in_SelectedDate,".")(2)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:MultipleAssign>
+          <If sap2010:Annotation.AnnotationText="gün seçiminde eğer gün 10'dan küçükse günün başındaki 0 rakıma atılmalıdır.&#xA;" Condition="[tempDay.Substring(0,1).Equals(&quot;0&quot;)]" sap:VirtualizedContainerService.HintSize="1589,375" sap2010:WorkflowViewState.IdRef="If_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[tempDay]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[tempDay(1).ToString]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <uix:NApplicationCard sap2010:Annotation.AnnotationText="Kur verileri alınacak siteyi açıyoruz&#xA;" AttachMode="ByInstance" DisplayName="Use Browser Chrome: TCMB - Kurlar" sap:VirtualizedContainerService.HintSize="1589,4382" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OutUiElement="[browser]" ScopeGuid="6b74ff36-9246-42f7-acfd-4b279712073f" Version="V1">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1555,4121" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="sectionMaxDate" />
+                    <Variable x:TypeArguments="x:String" Name="sectionMinDate" />
+                    <Variable x:TypeArguments="ui:UiElement" Name="foundedElement" />
+                    <Variable x:TypeArguments="x:String" Name="elementGetAttribute" />
+                    <Variable x:TypeArguments="x:Int32" Name="tempIdx" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InterruptibleDoWhile Condition="True" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="1513,2425" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+                    <ui:InterruptibleDoWhile.Body>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1477,2258" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Boolean" Name="elementExits" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:UiElementExists sap2010:Annotation.AnnotationText="En son açık kalan sayfanın döviz kurlarını gösteren ekran olması durumunda anasayfaya yönlendirme yapılrı&#xA;" DisplayName="Element Exists Döviz Kodu" Exists="[elementExits]" sap:VirtualizedContainerService.HintSize="1435,182" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7060cae2-aa79-4708-bb05-b9f0bfe22195" InformativeScreenshot="b030de5c1b8d3e8420cc8bae92b11c8d" Selector="&lt;webctrl tag='STRONG' /&gt;" TimeoutMS="1000">
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:UiElementExists.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:UiElementExists>
+                        <If Condition="[elementExits]" sap:VirtualizedContainerService.HintSize="1435,374" sap2010:WorkflowViewState.IdRef="If_5">
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,195" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:NavigateTo sap2010:Annotation.AnnotationText="Anasayfa üzerinden işlem yapılması amaçlanarak olası hataların önüne geçilmesi düşünülmüştür." Browser="[browser]" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="334,103" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="https://www.tcmb.gov.tr/kurlar/kurlar_tr.html">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:NavigateTo>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_18">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                        <ui:GetValue ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Başlangıçtaki yıl seçen  buton üzerinden tarih çekmemiz gerekmektedir. Alınan Yıl - 4 o aralıktaki en küçük yılı verir&#xA;" DisplayName="Get Text 'A'" sap:VirtualizedContainerService.HintSize="1435,182" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0ca5bf51-0d02-4f09-982c-9117cb16e8d2" InformativeScreenshot="37d6c36e2f02cbfa614c1c394aa0c21b" Selector="&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl aaname='????' parentid='calendar_report' tag='DIV' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[sectionMaxDate]</OutArgument>
+                          </ui:GetValue.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:GetValue>
+                        <Assign sap2010:Annotation.AnnotationText="Aralıktaki minimum Yılı buluyoruz" sap:VirtualizedContainerService.HintSize="1435,91" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[sectionMinDate]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[(int32.Parse(sectionMaxDate)-4).ToString]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                        <If sap2010:Annotation.AnnotationText="İstenilen yılın aralıkta olmaması durumunda aralığı artarak veya azaltarak istenilen yılı bulmaya çalışıyoruz. Eğer bulursak sürekli aralığı kontrol ederek bulan do while döngüsünü break vasıtasıyla sonlandırıyoruz&#xA;" Condition="[NOT (sectionMinDate &lt;= tempYear and sectionMaxDate &gt;= tempYear)]" sap:VirtualizedContainerService.HintSize="1435,1177" sap2010:WorkflowViewState.IdRef="If_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="839,593" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If sap2010:Annotation.AnnotationText="eğer aralıktaki minimum yıl istenilen yıldan büyükse aralığı küçültmek, küçükse aralığı büyütmek için butonları tıklıyoruz" Condition="[sectionMinDate &gt; tempYear]" sap:VirtualizedContainerService.HintSize="797,439" sap2010:WorkflowViewState.IdRef="If_2">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="376,249" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ClickType="Single" DisplayName="Click 'Gösterge Niteliğindeki'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="6b74ff36-9246-42f7-acfd-4b279712073f" Version="V1">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://www.tcmb.gov.tr/kurlar/kurlar_tr.html" DesignTimeRectangle="1580, 253, 28, 26" FriendlyName="'chrome.exe TCMB - Kurlar'" Guid="b1bd74ad-f0f7-40a9-a7b9-6e4f7a057e65" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGRSURBVEhL7ZW7SgNREIbFxkp8Ia2DgoXPoba+hEistbYxGoOk0yIQY2NhxEajKIJYCCmiLIRcGPOFXdg9OZfZEFL5wcJmzsz8y5yZyYIo+I66UrxryeZ5QwqnddkoNcYP79g4w0eDVzDqDWSv9ijrpRs5e/4c/zbBxhk++Np80jgFW+0fWTupSeXlK7aEwZcYYl1YBQlYHQV+dKLYoocYYl2iE4KUhK+cRiyBWHLYyjshyD3Yytjp9mXl8FKOmm+xxQ85yGWSEaTTuHwXu9dNWdwvj0TfY4sfcpndmxGkvek4HztX92pRcpEzTUaQmQq1NWhFyUXONBlBBlmLVtTMmRFke+RhOxY9fnCLmjmnFuwNhrJVvpWlgwupvrqXg1dQW1KtGHhLqmmaPGLBpgmNRR4xCI6Fb/D7w3xiEBx8cK22p/avLBcrajHVagPqPtflDXP9e0oggK+0ldcFvsS4xMApCJSEe+Dy6ThbibBxhg++Np80XsEEOo32ZqYYZLYHD+/YODO70YVKcJb8C84YkT+WqNd+cmYoFQAAAABJRU5ErkJggg==" InformativeScreenshot="86aa3dd575b208b4167164e7d5f55c1e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;" SearchSteps="Image" TargetType="ImageBased">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="366, 97, 1228, 39" FriendlyName="'Gösterge Niteliğindeki'" FullSelectorArgument="&lt;webctrl tag='H1' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H1' type='' aaname='Gösterge Niteliğindeki Merkez Bankası Kurları' check:text='Gösterge Niteliğindeki Merkez Bankası Kurları' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAABNAAAAArCAYAAAC5KHUsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABlBSURBVHhe7Z1Paxw5t8bzVfwRsrzbLLO8S29nmeUss53V4KV39irQMOSlF5dgz2UmfknG0IPJuC89NI0TTIUmDoWxk7ZD43b8h3Ol7irpkVqqVjndHuf1I/hBWqUqSaekCufxkfTgwc//EkIIIYQQQgghhBBCSIRgJiGEEEIIIYQQQgghZEIwkxBCCCGEEEIIIYQQMiGYSQghhBBCCCGEEEIImRDMJIQQQgghhBBCCCGETAhmEkIIIYQQQgghhBBCJgQzCSGEEEIIIYQQQgghE4KZhBBCCCGEEEIIIYSQCcFMQgghhBBCCCGEEELIhGDm2o6sZKeSn18JptH5SNrverK8FriHfDv/PpTBxNKy8WvgumL907iASqeyHri+cEwbVTo/lB9DZe46c+rDj/2L4iEig34nWOab+fu0qEGlGW1d6g6Lgiot+t3c9XGAdvPT5YXkR7msvNgM37tIvuf5g20PfX9+zSUvrsrXY3nqX58n+H4/ZeEyhBBCCCGEEDJPpjLWOrJ1VjgmsTRUjp8vooUcQzo59QAbjj50g2W+VwFt0u6hNJ9D/qviWUe3PDbmJGLcuoCm7NeoEK9/+giC96LFmTnZcGFUCWgmXUnv7+3w/YvirtutCmx74Pvz9IMdf3n2l3Nt7vD/FkIIIYQQQsht42ZsysohOOGXQ2nt9WV1d18ae8eSXRb5Kk0JBiHHcE5OjhWNRDm84TL/EaANrweyGhBLYgJalZgzV/tFBYCObJ0X+XIhW/+GexSluDP6cizNzr6sdnLpFeXz/R2n7MKFqTmJGLXbeYP5sLw/Km7Q6UparXC5Bz/vyAYEoC1cnJmTDRcG2vr8WFY2urLa7UujeyBbn+x7G4u6zcD9i+Ku260KbLsvoD3PpHddXNJCLwrli4ACGiGEEEIIIeS2cX4870tW+CTBZYTNA3v9eiAreC3kGFJAq4fjoIq0d6eXmH2vAprfN5OuVT88Z5sCmgXr0MkXGy1vpW0EDJX8+Tlv5mTDheEIaNPte7xn1caFR0shd91uVThz2P3+/JCB0Hu4L0twbSFQQCOEEEIIIYTcNs6PDjglJwfyCK+NacPyzgvZeulfXwz3VUCTz/2pd/DdCmiKxzuHkpkyIqOzU2n8Ni0SUkCz+AJadLnrS2/s+BFC8+auC0EzBLQHz+GPAWqeLVzwKbnrdqvC+T7B+Fp7K20TnXwlrW24Z1FQQCOEEEIIIYTcNvjDcdYP37oFCxwxpjN9fRHcWwEtEAUYE9CquB0B7TtiTn1YuNCnmBLQIu11DhAYJwpoJgXb15PW16rrC+J7nj/O98mOr0c9GHvDXH7AexYFBTRCCCGEEELIbYM/1o8Kh0SlmCDwT4hZt1bn2ubtRaKEcBzUSfIPE6CANgfm1Id/REDzD2IocA4QGKdFCWhqjui9+e76OJgpoEHE5G22/3ueP873qRxfGHkqkvVeT983R5bUN3r871sQ0ExdhBBCCCGEEKLBHyi0xASBp+9OpXc0oekv1VlrSyMfyQAOGxidD2Xrzc60MLW2IyvZqS17fSWDT7ms4Ibe6CRNJVcgePiyL+0vIDbo550cysoL3wnKpFcUGT+jbMd4/yh85u/ypAvtU2n8vHH7NotrsNG/3x+dLi+k123LQ/PMGTgOapG8wwRiAlpQzFmE/aICwIwlnNo+/WFhZ5X084/68mTct+3xtVERvRITpqbynxXjrXzmmbKVvyH8s640YdN4fYjB6psqEWNTlt/k0jsDQaps6zMsVy2gPcaIsDIq5wZOv61jJHnxyPYbv5w9QCAfluXd9zvGt5dK4fnpv0s9FwaSjyO2indbJQQ1+5KZOjCKMt22+C2aToG++cwU0OA7ELi+9Nv++LCBEdhq8GUgjZe/O+Wm7VDYqrTf9YW0d+GkzxvZTY2n7YPp+am/l1Pft8BcPh9JW32Hqt8xXovgfJ8m72Bp1+aEDz6pqCc2H7z8pRdvZaOcw2W5GXMp2V4JdVXNc0IIIYQQQsg9An+kCGhxlKNk9kfz05X0/gYn8udtVZcfMVOkM+VUlk4YOjdTyTrRS6/QsfPSpSrnROyggDaSntOO8pmbjtPkJNW+xnu7YXbvb+2QVfRHpcH7RFuCgzr4PFStmySM6liEgFbLflEBoMohj9tndHQgzaPy2uS+mMOK+aOToeQgbpTJjdjbluZJcSGWPBHjsbIZnnvpJD02oWzUsfb3hGoVTvsMpz+EreNUWkWU2eB92ytXjumhKmPL4/h4sDZjfnYwcsh9l5lzauUsAc09yXf0sWeEmzq2XbiAtpFLXlye2lfOEYr85I1tLPt1KJm/klanr8fyNFQ+0W6POhV28+ZnfC773+Cq+RrBsYt+B+788qNlJ1TUE5sPmP/lVHr4R4myXMVcqmOvlLqi85wQQgghhBByv8Af3yKgOfvgnJ/Kxu6+rL63IpBcwqmA6IhdDmWrk8m6jt4qsvJ3xUmDz7ZleWNHmp+LCyplezvjvOWN7SKy67U04PogP5BVVffGUczpQQFNpwvpZZm6J1P3HMqqLvMrONfDgTR1X/YGrmN6dqra3ZXHOnJm+xj6qfujynePJTfOmHLapiIzAoBdBv3MOp5wmEAtAW0R9osKAHFHGaNURp8PZV09fx3HhkqjL8rOf/4lj5SdYg4r5us0OjmWhho7W59BnMM24XtRbWp31TjbO5SeaadKTh+6dl8suZLsvR4XfWl9sc+fCKbT7bHt9MRX5YSbgyAqnP4Y9lmn0iij2vxN70vRRPWlAeVxfDjz86wY0zDn4u9SpyvJP0zGRfPDsTT14SGRceAIOM4Jq/Vs+7BZjtOCzsC+y2Euy0W5KGhrp28a9x25p91Oz4d1f4zhKZOOqKSSmv8tPc6c8Q3zYQ52W+8cSBvEUHuK6Kb7DR+3HWyM3+B5CGjO/BpKA4UpwzcKaDrp/0/0N7WTS6+/X31vLXul1RWe54QQQgghhJB7B/64uYCGjpuOuLH51hmFfHBasq51Xp9+KBw97wRQbNfUHl5rIIh9PZafynw8Zc9xuFFA86MyJjx5XzpM7jIqs88U1qNAByvbs5E8uC/V9LK7AOCgavv/kJXuqW1HLQGtYK72iwgAVY6y2VvPWeL12kaveO871hfMH+Vv7dLYSJuW961770THxPqA+dimFggFcLhGsJ0ovnrjJ+70x7F1qPddRk154+/RXiGOqbY55U2Z2PyEd6DbulHmuwKa7pu7/E8RtOFfZimpTvk+CBU1beuyKauHRRmVkvbZQlufH8vKWIjrymr3YLw0s0yjk7676X1sPmDEGuZjv74OZMUsRY3Mh3nZ7Y3JhXyoE8f1834xl/HdVwhbMbAtMpQefFfiJ5lW1BObD5ivI8b8Zdl+Gby3lr0UCXXFvkeEEEIIIYSQewb+QKGlnqMQd5LQ+TDiEjgtKDiVTs7gMHMiTCoFIHSYHKEM2nSNkRcooLkiVImpz7lPYdqNYoPbPhTK8GTEfL+IqqsC+jK2v3F8rQBk63LbXuXkzdV+WB6d9OgYgHwvcsi02bNzrC/RPkbahIdiOCfGxvqAzjSKOWv2PWAfptuz7UQv4TK8qeffREAzJ0e642+lEJf0XHLLl2Xw3bj3Yh/s2I29SyBgQ2ffNy0yYdRlTds6oKil+5USzYn1hdLlhbT3e7LsPwv75YhCke9G3fnwDXabPeahTkdkLfbI+6revdm3MuEd+2CdfvK/lYaKemLzIWWeJNyb8o1IqSv63SGEEEIIIYTcL/AHCi2Oo4BOBiRb5q20zX5UCcIORp3gX/3XXssjbzNxTaUA1Ik5QOi4YZtmCWh2Q3bXIVYYO2AkRxv2loo7iEmOFzh5k/IQeaMcVB29NXcBra79Yo5o1FGGseE5qLbN7smSsb5E+xhsE0ZXee8l0gcbeejbEMYMlPfbs/QGlhk6y/AKEpx1H/d924hOKwiW40/18RW2CcdHfMxjH+zYSBBXfBs6+77pZ7lRYnVtizjLT3H5ZBWRb5abriTrv5XHeN9GJq3ikJTeO9zTa0EC2gy7Pdg+MIe2tDogws8c88WYLMo//OW1Z7eEd+yDdQaSuxS2pKKe2HxImSexMrXspUioK/rdIYQQQgghhNwv8MfNBbQ0B92Wd5csaRGtEThNrqRSAIo6QOi4pYkJE0AQ8x16qCtJbIDySY4XOHmmPOwzpJeuzV1Aq2u/mCMatQPY23NQbZtdu8X6Eu1jsE0V7yXSh7gNwyKPW74P9Xn7LJVEbR3Hf9+lEGXaV0ZwFRFAjk31XmXj56TNz28R0OzeayoNi1NHgbq2teC34kpa/sm/MdDW+Nxn2/Jk9xD2J1TtSTjkY+kXiJT7lvlQ024xHraOg/U6Iq5Keb8bOQU44R37YNvHaSgb+/Ahh70aLRX1xOZDyjypOZdi9kp5TnzsEkIIIYQQQu4V+CMqoBWb0Y8p91tSyZZJc9CdZzbVPXji2eVQmr+FRbRkASiasE3xtpaY+vxlSaYu5Qi+KvPRQYynJMcLHFRbHp6vHOwNT1Ap761y8uZqv7qCgdf+4BJOvQE5LFuL9SXax2CbKhz3SB/w+dEUK38Jm8yrFDyRsKbTr5kai2X0Zrm8sPxd7Otk933DPuOYj6cbC2jXV45oo5cPmlMnC+ra1oAb1QeeGwVtHXiue1qlGt+RZaEPX2bSOnHf7TfNh5p2c9mU5daB9GBD/HFy6p0+QXjw0YuyG5Pwjn2w7SqN5+DaPkQfu8uDJ1TUE5sPKfMkaS4l2CvhOdHvDiGEEEIIIeR+gT+iAhoCDoctcwMBTdNUzpdxrlS6HsnWq2kR7bYFNNtm5RDCJvA2H5ccooMYT0mOFzioWB4PE8iNfplu539WQIMN7ItlqFP5zn5N8b5E+xhsU4XjHukDPj+aqsp/vbDPDYkhSU6/i7FRWW8ZcVbYrBTMjD1MHdjnBQto43QlA3PPdKRYXduWmINFVApG9cVAWwee6yzVVmnqkI/mW9lC4ewSxa5vmA817Vay9FvfPT0WBdup/m3Kj2pcoDg3Oso8ES3hHfs4bbeid/U7qqgnNh9S5smMMsn2Sqgr+t0hhBBCCCGE3C/wBwotUUcBHA5b5oYCmmatIxtf0FFV93snoSULQJ8PbKScwzYsY5otoDknKZ4NpLm7L6t7A+s8OpFUroPY2gnVvyP//Ut8iaoBHFTHVnCYgE3pdp6r/eoKBgpcVjb6fCjryp7r74fWwfdOX4z1JdrHYJsqHPdIH5znf3wbsIPif+xeUlh+LH608BAB3CevIMFZ95kS0MwS40m0T3lQgtkTzdSBfcYxP5RmqF+Kx7NOkEQcMUW15mNPHsNeZfo3lq9r2zEzo5sqQFs749SCh0w4h3x40bH5B9Ve/yCDsmzd+VDTbho3Wu5KsndteRit1/J4F75ZKuk5Y+2b8I59nLaDDSqjBCvqic2HlHlSUaaWvRLqin53CCGEEEIIIfcL/IEOZcxReDSvJZzI2o40jkBEOzlwoiWSBaAkUSJBQNMRHO8xfgPThbRaKIbdwBGNAU6eays4TMCkBQhoKfaLOu5VdthWYwveL6broTQ8wTTWl2gfg22qaE+kD3UdZSxfbm6/hPb0hMH6YxXeHbSzPHWz1yn7CBGRpg7sc8qYRxLGNNqwjCxEkclb/lzXthrn8IDg/loVoK2dcWoJt+m1c5Kqzp+ITgsQ0BLs9uDnbnHyqk5Xav5uTz8n0j/Nw+1DyY0IqUXd8tuV8I59sE5nHLl7WrqHCVTUE5sPKfMkWqamvRLqusnYJYQQQgghhPwHgj8cQeCojjNR8xROzbNtefoSl/tswwlybrRJpQAUPUVyR9Y/FKfpHR1AVESamPBYOVZjCQ0iUUZnp7KxUzhkhopTOGMnwsUAJ2/KUcMoj3FKtLNirvaLOu5VDrndl2mEm7d/GUgjsO9drC/RPgbbVPFeIn2InxTZlWbxHnsfMhN9GGwPRk05S1YVKcKAR0hAW+pO1IpBPphEJgYFAexzfMwvd47NGG2a5YM1BTRTvyv0opBS17b+iZLhEx4rQFujfYBgBNoGRJ869y1AQEuw24M3pvR4zJgIsmi9m/LofzvyBE6AXcJTj42oO08Bzf3DintS6i0LaHXtlVBX1beVEEIIIYQQco9wfqCY4m34PsF1aq0zEXeS0PnI9l6rvJZyXIs8x/GzwsA4UgL2AqoUgNAxchwgbBM6e7MFNLMEaOam3hNs++IOYpLjBX2ZLo/90clte5WTN1f7xRzRijFgxMjEKKJYX6J9jLQp2u9YH6LvC8YMlA+3xxVDen+DGJLgrPuEBLQHL4v2l0Idit2mDnwHsbng9sHaKP4uDREbLu2aXFfAqGlbZxm1L0SmgLbG5xo8ga7cAy0qKC9SQIvbLSo8hp7zhz1dNOui4AhtUXPwv/y82Dv2wTr9b6ezzHwojeAekV49sfmQMk8iZWrZS5NQV9W3lRBCCCGEEHKPcH44TlDAqUKnViUUDaxYgXs/bQb3hCqXoLlLijCKwa0bhRDXMVSUm6rr5Diw4PA6y6JmC2gmMuVyKFu73cn+TM3fp8qVoIOF7UNnztljKQY4eSFHzR4moFNcCPHvnav9Yo5o1FGGSLCzgTT+bI/tWbUnXKwv0T5G2lS3/APcO6k85VJTClY6gbAce74jhqBomCIMeAQFNCfisxSmi2umDnwHOA9VvjlBFsa6SnYj/QRxJWZDZ98yEFJq2hY3pg+eaDoLtLVjuwnuPlnQTrwP/4jQPIBv3/wFtJjdcIzhkuClHbuvoHkORs85y+B7dlmjGXdzFtA84dgeJoD14BhTfTB/MFEJ50PKPImUqWUvTUJd0e8IIYQQQggh5H7hZmzKTx9xQ/+RtLP+ZNP3vWPJxtENV2YZHjoTzn5F56eyoTfex43iL60Ig5vK6zpaXVW2e2yiJ/yIE8cp0s/u9qXxf51CmPD2LMozebrRlfUc7lGOkXHYEwQ0K/AF0vWFZH29qTjcg8srL4ey8WdbnvyZF/bSqb6DGnTUHIEzXUCbq/3qCgbeaYdT6fJCet02HPIQ70u0j7E24XIu1aa2HmedXNpDGONOH9z9k7KsJ09e9mTjsy2f1B5H4IqIMzFhwAFs57QTo6eUrUEQs3W4Y86Zn2cDWf9jR552cJN5NZ7MmP4GAU2B8yfrleJeHdui/a6ktesdNuAcChIBbX1+LCvj+9ryU6cvzf6pDECA1Bv3m/GNIpRu5/tM1vHbNE5gk7rzoa7dpsawak+m2l/kTFL5LXD3Ihsc5bKqvsMbZcSvSmFhK/KOfbDtoW8nLhUd5vJDkY8C/ujzgfq+tGW1D/836ITzIWWexMrUslfFc4CqbyshhBBCCCHkHjGVsaYcK7N31HTSDkSjcIhcZ6LqPtjMecy2cqpAxPBS/g73RlM4jluRwPl0o0n85DuHswW0B819aVfYQKeRcrZshEd1f0ZHWdoG6NDPsKOGUR5u2yudvHnaLyoAxB3ypVe5ZEY8CSfd5lLEmJuA5gkKweSJGGa5aSjpE2LN0rRqm6MQbSLEUoQBB7Cp104b3eiNYVOH995mzev32P74uzREba5AIeXkwIz9ZNuGxquTIvMWQVtXpaFqu7M89LUED7w4O5QtIwSBTerOh9p2C7+30dGhtMzzrT0q57L+I0YdkdTHeS+hd+CKpOUy/OX90Fu/kuyLnT9zE9Bq2iulLgpohBBCCCGEkDHBzLUdWdF/tceoC4gUKh2KKWdirS2NfOTcNzofytabHYgAK/ldnnTdOsab9AfLKud751Ay4wCpNMzlCVx/+LIvbXTIrq8mm9S/9JdezhbQln47mESPKae+8UdP1nXEVvdAtvIhRK74AkXEZpkXrVYFOKhRR81Eu7ltn+Xkzc1+dQUDxeOd48lJgGeH8tMf+8qW2p65tD6NZGTsqfpT2CnWl2gfq0SJZ11pfrqw9agx1ugcx8v/vCnLb3LpnYGIom3xKZeVF+6y00qbY1RiGY2TIgw4gE39dpaRNrjMUAN1TO1396yYnxh9dT6SthcBmCSuVNncEVJGsvFrmZ9oW0eoCaXwvHVAWwfSuN/veuG5qb9jELU1OMnl6TP3ffc6Rdm68+Emdmu+la2TwmbaXvn+uN02sks9/6V9ztILXd62VUfN5nlfnqg+2LoS3rGP817C78BZZl4eJrDWkQ1s/6dDWdffldh8SJknVWXq2CuhrlnfVkIIIYQQQsg9IZh5n3meSa8QwYIn/8FeSFMCBZnGON0opFjs3kSJTjwhhBBCCCGEEELIbRPMvMfYgwzCgg9uuk8BbTZmKaPe1y5w3W4uTwGNEEIIIYQQQgghd5Rg5j3GCmgqlRvu7/bGm4839g6lZ5Y9jaS5EX4GseBeYKOTY2kqe67/2ZNVbddsYDdnh0MmCCGEEEIIIYQQQu4Uwcz7DCzhrEr5e7vpPalg5n5WOvmHTBBCCCGEEEIIIYTcIYKZ951nbVnvn0p+bqOnxunySgY6iqoVPuiAhFl60ZPmh6EMvvr2vJD8qNhQPHAfIYQQQgghhBBCyJ0gmEkIIYQQQgghhBBCCJkQzCSEEEIIIYQQQgghhEwIZhJCCCGEEEIIIYQQQiYEMwkhhBBCCCGEEEIIIROCmYQQQgghhBBCCCGEEMW/5P8BA35iTDNRzzIAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NClick.Target>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="376,249" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ClickType="Single" DisplayName="Click 'Gösterge Niteliğindeki'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="6b74ff36-9246-42f7-acfd-4b279712073f" Version="V1">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://www.tcmb.gov.tr/kurlar/kurlar_tr.html" DesignTimeRectangle="56, 251, 29, 33" FriendlyName="'chrome.exe TCMB - Kurlar'" Guid="d2b1ab27-38fa-44d9-ba2f-25bf1a1af0af" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAB0AAAAhCAYAAAAlK6DZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGkSURBVFhH7ZU9SwNBEEDFxkr8Q1qLgoW/Q239EyKxjrWN0RjETouAxsbCiI1GUQRJIaSIchDyweiLe+TY27udCyYK5sHBZW5m3rE3u5mSX2AiHSl/W/oWtCR3VZOVw4os7p/LcqHSv7gnxjNyNHilQbsrm+VbWSpcyMH9a/+3DTGekUOuKydKqrTWeJeFvbKUHuom4odcaqhNIlFK0fxX8UszMBE91FCbJHZKWR7edhhhCLX0cC21U8p30S5pvvokczvH0mx1TGQAPehlE5MygQyEhnz1Waa3irJxVjWROPSypzomZfSZRB+hcP302kTc0IueUWJS9pxv5LVCoBc9o8SkbPY0sghD7J4xKadMErs338K1DEKwe2aSnjzWZWb7SFaLl9Lu9kzUj1fqW95hxN7l1QxSFrFqkLRbRitWbZksh0NU3Om5xarDAbIcg4hncyW5a3yYyAD1MQh8h7Ef+DD2v7YQinhb7VIDudQkCSFVCiwP34WBYBJdy0WMZ+SQ68qJ4pWGMIGMPnuOzc4pw8U9MZ7ZU5qEWvqTTKQj5b9IRT4BksJoJhj72HgAAAAASUVORK5CYII=" InformativeScreenshot="22c964e53cc54998c046b40bed4771fe.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;" SearchSteps="Image" TargetType="ImageBased">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="68, 98, 821, 37" FriendlyName="'Gösterge Niteliğindeki'" FullSelectorArgument="&lt;webctrl tag='H1' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H1' type='' aaname='Gösterge Niteliğindeki Merkez Bankası Kurları' check:text='Gösterge Niteliğindeki Merkez Bankası Kurları' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NClick.Target>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <ui:Continue sap:VirtualizedContainerService.HintSize="797,22" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="551,974" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:Int32" Name="index" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'DIV'" sap:VirtualizedContainerService.HintSize="509,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                <ui:Click.CursorPosition>
+                                  <ui:CursorPosition Position="Center">
+                                    <ui:CursorPosition.OffsetX>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetX>
+                                    <ui:CursorPosition.OffsetY>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetY>
+                                  </ui:CursorPosition>
+                                </ui:Click.CursorPosition>
+                                <ui:Click.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b54c0f7a-5162-4415-bf2a-1c432a976485" InformativeScreenshot="750478e0477edc8050b73e1b36f3a247" Selector="[String.Format(&quot;&lt;webctrl aaname='{0}' parentid='calendar_report' tag='DIV' /&gt;&quot;, tempYear)]">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:Click.Target>
+                              </ui:Click>
+                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="509,100" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                                <ui:MultipleAssign.AssignOperations>
+                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[tempIdx]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                  </scg:List>
+                                </ui:MultipleAssign.AssignOperations>
+                              </ui:MultipleAssign>
+                              <Assign sap:VirtualizedContainerService.HintSize="509,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[int32.Parse(sectionMaxDate)]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="MOD kullan&#xD;&#xA;" DisplayName="While" sap:VirtualizedContainerService.HintSize="509,434" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                                <ui:InterruptibleWhile.Body>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="473,223" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,131" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                                      <ui:MultipleAssign.AssignOperations>
+                                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                                            <ui:AssignOperation.To>
+                                              <OutArgument x:TypeArguments="x:Int32">[tempIdx]</OutArgument>
+                                            </ui:AssignOperation.To>
+                                            <ui:AssignOperation.Value>
+                                              <InArgument x:TypeArguments="x:Int32">[tempIdx+1]</InArgument>
+                                            </ui:AssignOperation.Value>
+                                          </ui:AssignOperation>
+                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                                            <ui:AssignOperation.To>
+                                              <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
+                                            </ui:AssignOperation.To>
+                                            <ui:AssignOperation.Value>
+                                              <InArgument x:TypeArguments="x:Int32">[index-1]</InArgument>
+                                            </ui:AssignOperation.Value>
+                                          </ui:AssignOperation>
+                                        </scg:List>
+                                      </ui:MultipleAssign.AssignOperations>
+                                    </ui:MultipleAssign>
+                                  </Sequence>
+                                </ui:InterruptibleWhile.Body>
+                                <ui:InterruptibleWhile.Condition>
+                                  <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="NOT index.ToString.Equals (tempYear)" />
+                                </ui:InterruptibleWhile.Condition>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InterruptibleWhile>
+                              <ui:Break sap:VirtualizedContainerService.HintSize="509,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ui:InterruptibleDoWhile.Body>
+                  </ui:InterruptibleDoWhile>
+                  <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="1513,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" sap2010:Annotation.AnnotationText="İstenilen  ay seçilir" ClickType="CLICK_SINGLE" DisplayName="Click 'DIV'" sap:VirtualizedContainerService.HintSize="1513,137" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ccdcd8d4-664e-4b82-aea0-7f22c4a90893" InformativeScreenshot="8ebcf01bca06d45c5efbcfa35a61fe78" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl aaname='{0}' parentid='calendar_report' tag='DIV' idx='{1}' /&gt;&quot;, tempMonth, tempIdx)]">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Click>
+                  <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="1513,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                  <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="Gün seçimi yapılr, ancak bazı günler hafta sonu veya belirli özel günler olduğu için disable olabilir. İlgili günün aktif olup olmadığı A tagı vasıtasıyla tespit edilir. Eğer yoksa yeni gün girmesi istenicektir." DisplayName="Find Element" FoundElement="[foundedElement]" sap:VirtualizedContainerService.HintSize="1513,182" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d0a0877-1890-4e8c-9245-9f348e3a9a33" InformativeScreenshot="b5a7436a784a61299e2906f53780d129" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl aaname='Pts Sal Çar Per Cum Cts Paz' tag='TABLE' idx='{0}' /&gt;&lt;webctrl aaname='{1}' /&gt;&quot;, tempIdx, tempDay)]">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:WaitUiElementAppear.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:WaitUiElementAppear>
+                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="tag" DisplayName="Get Attribute" sap:VirtualizedContainerService.HintSize="1513,166" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                    <ui:GetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">[elementGetAttribute]</OutArgument>
+                    </ui:GetAttribute.Result>
+                    <ui:GetAttribute.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[foundedElement]" Id="9588ad7e-63ec-4013-a1e4-13b23b9a8ba5">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetAttribute.Target>
+                  </ui:GetAttribute>
+                  <If Condition="[elementGetAttribute.ToString.Equals(&quot;A&quot;)]" sap:VirtualizedContainerService.HintSize="1513,833" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,603" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Info: Date was found successfully&quot;]" />
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Eğer A tagı varsa gün seçilir." ClickType="CLICK_SINGLE" DisplayName="Click 'A  #'" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="42a38905-6bd3-471d-b638-06e2921c4741" InformativeScreenshot="0bf05d4cb5e8efb7ca60f37e35448f61" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl aaname='Pts Sal Çar Per Cum Cts Paz' tag='TABLE' idx='{0}' /&gt;&lt;webctrl aaname='{1}' tag='A' /&gt;&quot;, tempIdx, tempDay)]">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:Click>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Verilerrin çekilebilmesi için göster'e tıklanır" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1724ed96-32f1-4818-b2a0-9bd9ae10e540" InformativeScreenshot="b3fe807a63932e2dbad734b6d0c50775" Selector="[String.Format(&quot;&lt;webctrl tag='INPUT' idx='{0}' /&gt;&quot;, tempIdx)]">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:Click>
+                        <ui:Break sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_2" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,672" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;Warn: Date isn't valid try again&quot;]" />
+                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Belirtilen tarih geçerli değildir. Tekrar tarih girişi yapınız!&quot;]" />
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Seçilen günün geçerli olmaması durumunda tekrar tarih girişi yapılması gerekmektedir." DisplayName="Invoke Component_InputDate workflow" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\Component_InputDate.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_InputDialog_Date">[in_SelectedDate]</OutArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeWorkflowFile>
+                        <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[tryAgain]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:Continue sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Continue_2" />
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="-8, -8, 1936, 1066" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="f29d77a8cfdbf0f8c570224c38a1dd94.png" Selector="&lt;html app='chrome.exe' url='https://www.tcmb.gov.tr/kurlar/kurlar_tr.html' /&gt;" Url="https://www.tcmb.gov.tr/kurlar/kurlar_tr.html" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+    </ui:InterruptibleDoWhile>
+  </Sequence>
+</Activity>

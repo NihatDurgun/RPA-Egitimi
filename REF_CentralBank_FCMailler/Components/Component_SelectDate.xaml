@@ -1,0 +1,667 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Component_GetCurrencyData" this:Component_GetCurrencyData.in_SelectedDate="12.06.2012" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_SelectedDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_EmailAddress" Type="InArgument(x:String)" />
+    <x:Property Name="in_EmailSubject" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1699,5042</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Component_GetCurrencyData_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Component_GetCurrencyData" sap:VirtualizedContainerService.HintSize="1709,4977" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="tempDay" />
+      <Variable x:TypeArguments="x:String" Name="tempMonth" />
+      <Variable x:TypeArguments="x:String" Name="tempYear" />
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="tryAgain" />
+      <Variable x:TypeArguments="x:Int32" Name="tempIdx" />
+      <Variable x:TypeArguments="ui:UiElement" Name="browser" />
+      <Variable x:TypeArguments="x:String" Name="elementGetAttribute" />
+      <Variable x:TypeArguments="ui:UiElement" Name="foundedElement" />
+      <Variable x:TypeArguments="x:String" Name="sectionMinDate" />
+      <Variable x:TypeArguments="x:String" Name="sectionMaxDate" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InterruptibleDoWhile Condition="[tryAgain]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="1667,4885" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_2">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1631,4720" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Tarihi gün, ay, yıl şeklinde parçalıyorum&#xA;" DisplayName="Veri Parçalama" sap:VirtualizedContainerService.HintSize="1589,204" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[tempDay]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Split(in_SelectedDate,".")(0)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[tempMonth]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Split(in_SelectedDate,".")(1)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[tempYear]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Split(in_SelectedDate,".")(2)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:MultipleAssign>
+          <If sap2010:Annotation.AnnotationText="gün seçiminde eğer gün 10'dan küçükse günün başındaki 0 rakıma atılmalıdır.&#xA;" Condition="[tempDay.Substring(0,1).Equals(&quot;0&quot;)]" sap:VirtualizedContainerService.HintSize="1589,370" sap2010:WorkflowViewState.IdRef="If_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Sıfır rakamını at" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[tempDay]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[tempDay(1).ToString]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'TCMB - Kurlar Sayfası'" sap:VirtualizedContainerService.HintSize="1589,3974" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="d955e01231b5d6167de88382411021a0" Selector="&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;">
+            <ui:BrowserScope.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1555,3828" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InterruptibleDoWhile Condition="True" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="1513,2330" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_3">
+                    <ui:InterruptibleDoWhile.Body>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1477,2165" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Boolean" Name="elementExits" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:UiElementExists Exists="{x:Null}" DisplayName="Döviz Kodu Adlı Sutün Sayfada Mevcut mu?" sap:VirtualizedContainerService.HintSize="1435,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cac68647-3e87-4d61-893b-bfa4cee0183b" InformativeScreenshot="af6772c317ed8e1365b94afcea0b047c" Selector="&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl tag='STRONG' aaname='Döviz Kodu' /&gt;" TimeoutMS="1500">
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:UiElementExists.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:UiElementExists>
+                        <If Condition="[elementExits]" DisplayName="Eğer mevcutsa anasayfaya git" sap:VirtualizedContainerService.HintSize="1435,369" sap2010:WorkflowViewState.IdRef="If_6">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="376,193" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:NavigateTo sap2010:Annotation.AnnotationText="Anasayfa üzerinden işlem yapılması amaçlanarak olası hataların önüne geçilmesi düşünülmüştür." Browser="[browser]" DisplayName="Anasayfaya git" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="NavigateTo_2" Url="https://www.tcmb.gov.tr/kurlar/kurlar_tr.html">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:NavigateTo>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                        <ui:GetValue ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Başlangıçtaki yıl seçen  buton üzerinden tarih çekmemiz gerekmektedir. Alınan Yıl - 4 o aralıktaki en küçük yılı verir&#xA;" DisplayName="En büyük yıl değerini al" sap:VirtualizedContainerService.HintSize="1435,178" sap2010:WorkflowViewState.IdRef="GetValue_4">
+                          <ui:GetValue.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0ca5bf51-0d02-4f09-982c-9117cb16e8d2" InformativeScreenshot="37d6c36e2f02cbfa614c1c394aa0c21b" Selector="&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl aaname='????' parentid='calendar_report' tag='DIV' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetValue.Target>
+                          <ui:GetValue.Value>
+                            <OutArgument x:TypeArguments="x:String">[sectionMaxDate]</OutArgument>
+                          </ui:GetValue.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:GetValue>
+                        <Assign sap2010:Annotation.AnnotationText="Aralıktaki minimum Yılı buluyoruz" DisplayName="En küçük yıl değerini bul" sap:VirtualizedContainerService.HintSize="1435,91" sap2010:WorkflowViewState.IdRef="Assign_5">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[sectionMinDate]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[(int32.Parse(sectionMaxDate)-4).ToString]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                        <If sap2010:Annotation.AnnotationText="İstenilen yılın aralıkta olmaması durumunda aralığı artarak veya azaltarak istenilen yılı bulmaya çalışıyoruz. Eğer bulursak sürekli aralığı kontrol ederek bulan do while döngüsünü break vasıtasıyla sonlandırıyoruz&#xA;" Condition="[NOT (sectionMinDate &lt;= tempYear and sectionMaxDate &gt;= tempYear)]" sap:VirtualizedContainerService.HintSize="1435,1169" sap2010:WorkflowViewState.IdRef="If_8">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="839,588" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If sap2010:Annotation.AnnotationText="eğer aralıktaki minimum yıl istenilen yıldan büyükse aralığı küçültmek, küçükse aralığı büyütmek için butonları tıklıyoruz" Condition="[sectionMinDate &gt; tempYear]" sap:VirtualizedContainerService.HintSize="797,434" sap2010:WorkflowViewState.IdRef="If_7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="376,246" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Bir sonraki küçük yıl aralığına geç" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                      <ui:ClickImage.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:ClickImage.CursorPosition>
+                                      <ui:ClickImage.Image>
+                                        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAB0AAAAkCAYAAAB15jFqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGdSURBVFhH7ZW7SgNREEDFxkr8Ia1FwcLvUFt/QiTWWtsYjUHstAhobCyM2GgURRALIUWUQMiDMSfswnL3PmbVjc0eWNjcnZmz3J07mZJ/oJDmSiHNlUKaK2rpR6crpeumrBzVZfHgQpbL9fHFPWs8I0ZDUNrpDWSzdidL5Us5fHgb/zZhjWfEEGuLSeKVNlufsrBfk+rje7QShlhyyHXhlJI0P0p+bXeiFT3kkOsSW6VsD2/7E2EMudSwbbVVynexbWm725e5nRPZbTxHK36oQS2TlJQOpCFcbJw3ZHqrMhK/RCt+qGV2dUpK69OJPtbPbtRialEzSUrKmQu1PGjF1KJmkpSUw65FKzZrpqRMmSysReK9W7fYrPkraW8wlNXKlcxsH8vpk3uABKXa7dUKIbi9mkbKIlQ1UujIZBGC6sj4hkN/mE0IquEArjF43/qS2VJVLVSPQeA7THzgw8T/2mJI4m1tW+2CWHJcQvBKge3hu9AQdKJtu1jjGTHE2mKSBKUxdCCtz5njsDNluLhnjWdml7pQS/+SQpojIt95W8LZty5d1gAAAABJRU5ErkJggg==" />
+                                      </ui:ClickImage.Image>
+                                      <ui:ClickImage.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="8bc77f38-2fc2-4ba6-a5d3-b7d29f3df42e">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:ClickImage.Target>
+                                    </ui:ClickImage>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="376,246" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Bir sonraki büyük yıl aralığına geç" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                      <ui:ClickImage.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:ClickImage.CursorPosition>
+                                      <ui:ClickImage.Image>
+                                        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAfCAYAAACGVs+MAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGpSURBVFhH7ZU9SwNBEIbFxkr8Q1qLgoW/Q239EyKxjrWN0RjETouAxsbCExuNogiSQkgR5SDkg9En7pFj3duPQzjEPHCQzM7OvLc7MzclBTMRMBHwNwW8xV0pXTVl5bAhi/vnslxpjB5+Y2MNHx+CBMS9gWzWb2WpciEH96+j/zrYWMMHX5NPGm8Bzfa7LOzVpfbQUhY3+LKHvVl4CSDA/Fegl06sLP6wh71ZIpwCOELeIk/yBPYSw3QdTgHco++xl6Mnmds5lk63ryxjiEEsHasAKpli8qEcPcv0VlU2ziJl+Qmx9O6wCqCdqGgXSfL102tlMUMsYqaxCqCnXW3kmxyIRcw0VgEMFhshyRP0mFYBTLcsdm++k68FJAc9Zm4BJ48tmdk+ktXqpfQGQ2V1EyTAdQV5RARdgU8RhogILkLfNvQVEdyGIYMoLaI/NIsIHkQQMooRMVuqyV37Q1nG5BrFwL0V+jGCQj/HCQTgLXyvA/BlT1Zy8BYAHCH3SDFR0aYjxcYaPviafNIECUigkmkneprBwnTj4Tc21vRqzyKXgN/kvwsQ+QTbp/OanwZqPgAAAABJRU5ErkJggg==" />
+                                      </ui:ClickImage.Image>
+                                      <ui:ClickImage.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="3a06bde1-e4e7-410d-b058-812677b590f8">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:ClickImage.Target>
+                                    </ui:ClickImage>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <ui:Continue sap:VirtualizedContainerService.HintSize="797,22" sap2010:WorkflowViewState.IdRef="Continue_3" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="551,970" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:Int32" Name="index" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Bulunan yıl değerine tıkla" sap:VirtualizedContainerService.HintSize="509,106" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                <ui:Click.CursorPosition>
+                                  <ui:CursorPosition Position="Center">
+                                    <ui:CursorPosition.OffsetX>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetX>
+                                    <ui:CursorPosition.OffsetY>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetY>
+                                  </ui:CursorPosition>
+                                </ui:Click.CursorPosition>
+                                <ui:Click.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b54c0f7a-5162-4415-bf2a-1c432a976485" InformativeScreenshot="750478e0477edc8050b73e1b36f3a247" Selector="[String.Format(&quot;&lt;webctrl aaname='{0}' parentid='calendar_report' tag='DIV' /&gt;&quot;, tempYear)]">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:Click.Target>
+                              </ui:Click>
+                              <ui:MultipleAssign DisplayName="Idx değişkenini tut" sap:VirtualizedContainerService.HintSize="509,100" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                <ui:MultipleAssign.AssignOperations>
+                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[tempIdx]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                  </scg:List>
+                                </ui:MultipleAssign.AssignOperations>
+                              </ui:MultipleAssign>
+                              <Assign DisplayName="While döngüsü için max yılı index olarak tut" sap:VirtualizedContainerService.HintSize="509,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[int32.Parse(sectionMaxDate)]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="MOD kullan&#xA;" Condition="[NOT index.ToString.Equals (tempYear)]" DisplayName="İstenilen yılın idx değerini bul" sap:VirtualizedContainerService.HintSize="509,430" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
+                                <ui:InterruptibleWhile.Body>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="473,223" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:MultipleAssign DisplayName="Buluna kadar idx ve index değerini bir arttır." sap:VirtualizedContainerService.HintSize="431,131" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                                      <ui:MultipleAssign.AssignOperations>
+                                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                            <ui:AssignOperation.To>
+                                              <OutArgument x:TypeArguments="x:Int32">[tempIdx]</OutArgument>
+                                            </ui:AssignOperation.To>
+                                            <ui:AssignOperation.Value>
+                                              <InArgument x:TypeArguments="x:Int32">[tempIdx+1]</InArgument>
+                                            </ui:AssignOperation.Value>
+                                          </ui:AssignOperation>
+                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                                            <ui:AssignOperation.To>
+                                              <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
+                                            </ui:AssignOperation.To>
+                                            <ui:AssignOperation.Value>
+                                              <InArgument x:TypeArguments="x:Int32">[index-1]</InArgument>
+                                            </ui:AssignOperation.Value>
+                                          </ui:AssignOperation>
+                                        </scg:List>
+                                      </ui:MultipleAssign.AssignOperations>
+                                    </ui:MultipleAssign>
+                                  </Sequence>
+                                </ui:InterruptibleWhile.Body>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InterruptibleWhile>
+                              <ui:Break sap:VirtualizedContainerService.HintSize="509,22" sap2010:WorkflowViewState.IdRef="Break_3" />
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ui:InterruptibleDoWhile.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:InterruptibleDoWhile>
+                  <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="1513,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" sap2010:Annotation.AnnotationText="İstenilen  ay seçilir" ClickType="CLICK_SINGLE" DisplayName="Ay seçimi yap" sap:VirtualizedContainerService.HintSize="1513,137" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ccdcd8d4-664e-4b82-aea0-7f22c4a90893" InformativeScreenshot="8ebcf01bca06d45c5efbcfa35a61fe78" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl aaname='{0}' parentid='calendar_report' tag='DIV' idx='{1}' /&gt;&quot;, tempMonth, tempIdx)]">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Click>
+                  <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="1513,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                  <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="Gün seçimi yapılr, ancak bazı günler hafta sonu veya belirli özel günler olduğu için disable olabilir. İlgili günün aktif olup olmadığı A tagı vasıtasıyla tespit edilir. Eğer yoksa yeni gün girmesi istenicektir." DisplayName="İlgili günün attiributelarını çek" FoundElement="[foundedElement]" sap:VirtualizedContainerService.HintSize="1513,178" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                    <ui:WaitUiElementAppear.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d0a0877-1890-4e8c-9245-9f348e3a9a33" InformativeScreenshot="b5a7436a784a61299e2906f53780d129" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl aaname='Pts Sal Çar Per Cum Cts Paz' tag='TABLE' idx='{0}' /&gt;&lt;webctrl aaname='{1}' /&gt;&quot;, tempIdx, tempDay)]">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:WaitUiElementAppear.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:WaitUiElementAppear>
+                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="tag" DisplayName="Get Attribute" sap:VirtualizedContainerService.HintSize="1513,51" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+                    <ui:GetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">[elementGetAttribute]</OutArgument>
+                    </ui:GetAttribute.Result>
+                    <ui:GetAttribute.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[foundedElement]" Id="9588ad7e-63ec-4013-a1e4-13b23b9a8ba5">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetAttribute.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:GetAttribute>
+                  <If Condition="[elementGetAttribute.ToString.Equals(&quot;A&quot;)]" DisplayName="Günün tıklanabilir yapıda olup olmadığını kontrol et" sap:VirtualizedContainerService.HintSize="1513,756" sap2010:WorkflowViewState.IdRef="If_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,599" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[&quot;Info: Date was found successfully&quot;]" />
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Eğer A tagı varsa gün seçilir." ClickType="CLICK_SINGLE" DisplayName="günü seç" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="42a38905-6bd3-471d-b638-06e2921c4741" InformativeScreenshot="0bf05d4cb5e8efb7ca60f37e35448f61" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='TCMB - Kurlar' /&gt;&lt;webctrl aaname='Pts Sal Çar Per Cum Cts Paz' tag='TABLE' idx='{0}' /&gt;&lt;webctrl aaname='{1}' tag='A' /&gt;&quot;, tempIdx, tempDay)]">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:Click>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Verilerrin çekilebilmesi için göster'e tıklanır" ClickType="CLICK_SINGLE" DisplayName="göster butonuna tıkla" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1724ed96-32f1-4818-b2a0-9bd9ae10e540" InformativeScreenshot="b3fe807a63932e2dbad734b6d0c50775" Selector="[String.Format(&quot;&lt;webctrl tag='INPUT' idx='{0}' /&gt;&quot;, tempIdx)]">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:Click>
+                        <ui:Break sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_4" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="410,559" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="368,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;Warn: Date isn't valid try again&quot;]" />
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Günün geçerli olmadığını bildir" sap:VirtualizedContainerService.HintSize="368,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\Component_SendInformation.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_EmailAddress">[in_EmailAddress]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Content">Belirtilen tarih geçerli değildir. Tekrar tarih girişi yapınız!</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_EmailSubject]</InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                        <Assign sap:VirtualizedContainerService.HintSize="368,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[tryAgain]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Throw DisplayName="Throw" Exception="[New BusinessRuleException(&quot;Belirtilen tarih geçerli değildir. Tekrar tarih girişi yapınız!&quot;)]" sap:VirtualizedContainerService.HintSize="368,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                        <ui:Break sap:VirtualizedContainerService.HintSize="368,22" sap2010:WorkflowViewState.IdRef="Break_5" />
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:BrowserScope.Body>
+          </ui:BrowserScope>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+    </ui:InterruptibleDoWhile>
+  </Sequence>
+</Activity>
